@@ -1,42 +1,64 @@
-Feature: Api example
-  As an api user I want to execute request in order to get proper responses
+Feature: As an api user I want to execute request in order to get proper responses
 
-  @Example @Success
-  Scenario Outline: Example scenario for get user data
-    When I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
-    Then status code <statusCode> is obtained
-    And expected response is obtained in '<entity>' with '<expectedResponse>'
-
+  @Success
+  Scenario: Check the hours recorded for a project
+    Given My account created in clockify and my Api-Key generated
+    And   I'm in the Projects tab
+    When  I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    And   Got the status code <status>
+    Then  I will get the proper status code '<statusCode>'
+  @Project
     Examples:
-      | jsonName    | statusCode | operation | entity   | expectedResponse   |
-      | exampleJson | 200        | GET       | USER     | users              |
+      | operation | entity  | name      | jsonName    | status |
+      | GET       | PROJECT | ProjetAPI | projects/rq | 200    |
+      | GET       | PROJECT | ProjetAPI | projects/rq | 400    |
+      | GET       | PROJECT | ProjetAPI | projects/rq | 401    |
+      | GET       | PROJECT | ProjetAPI | projects/rq | 403    |
+      | GET       | PROJECT | ProjetAPI | projects/rq | 404    |
 
-  @Example @Success
-  Scenario Outline: Example scenario for get user data
-    When I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
-    Then status code <statusCode> is obtained
-    And expected response is obtained in '<entity>'
 
+  @Success
+  Scenario: Add hours to the chosen project
+    Given My account created in clockify and my Api-Key generated
+    When  I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    And   Got the status code <status>
+    Then  I will get the proper status code '<statusCode>'
+  @Project
     Examples:
-      | jsonName    | statusCode | operation | entity   |
-      | exampleJson | 200        | GET       | USER     |
+      | operation | entity  | name      | jsonName    | status |
+      | POST      | PROJECT | ProjetAPI | projects/rq | 200    |
 
-  @Example @Success
-  Scenario Outline: Example scenario for delete user
-    When I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
-    Then status code <statusCode> is obtained
-    And not response at all is obtained
-
+  @Success
+  Scenario: Edit the time recorded
+    Given My account created in clockify and my Api-Key generated
+    When  I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    And   Got the status code <status>
+    Then  I will get the proper status code '<statusCode>'
+  @Project
     Examples:
-      | jsonName         | statusCode | operation    | entity   |
-      | exampleJson      | 204        | DELETE       | USER     |
+      | operation | entity  | name      | jsonName    | status |
+      | PUT       | PROJECT | ProjetAPI | projects/rq | 200    |
 
-  @Example @Success
-  Scenario Outline: Example scenario for get users
-    When I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
-    Then status code <statusCode> is obtained
-    And expected response is obtained in '<entity>' with '<jsonExpected>' and the parameters '<parameters>'
 
+  @Success
+  Scenario: Check the hours registered
+    Given My account created in clockify and my Api-Key generated
+    When  I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    And Got the status code <status>
+    Then  I will get the proper status code '<statusCode>'
+  @Project
     Examples:
-      | jsonName    | statusCode | operation | entity | jsonExpected    | parameters  |
-      | exampleJson | 200        | GET       | USER   | usersWithParams | name:Janet  |
+      | operation | entity  | name      | jsonName    | status |
+      | GET       | PROJECT | ProjetAPI | projects/rq | 200    |
+
+  @Success
+  Scenario: Delete time recorded
+    Given My account created in clockify and my Api-Key generated
+    When  I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    And   Got the status code <status>
+    Then  I will get the proper status code '<statusCode>'
+  @Project
+    Examples:
+      | operation | entity  | name      | jsonName    | status |
+      | DELETE    | PROJECT | ProjetAPI | projects/rq | 200    |
+

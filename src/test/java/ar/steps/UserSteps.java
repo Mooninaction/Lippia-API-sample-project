@@ -6,8 +6,6 @@ import com.crowdar.api.rest.APIManager;
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.*;
 import com.google.api.client.repackaged.com.google.common.base.Splitter;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.lang.StringUtils;
 import org.testng.Assert;
@@ -36,5 +34,22 @@ public class UserSteps extends PageSteps {
             parameters = Splitter.on(",").withKeyValueSeparator(":").split(jsonReplacementValues);
         }
         return parameters;
+    }
+
+    @Given("My account created in clockify and my Api-Key generated")
+    public void myAccountCreatedInClockifyAndMyApiKeyGenerated() {
+    }
+
+    @And("I'm in the Projects tab")
+    public void iMInTheProjectsTab() {
+    }
+
+
+    @Then("I will get the proper status code {string}")
+    public void iWillGetTheProperStatusCodeStatusCode() {
+    }
+
+    @And("Got the status code <status>")
+    public void gotTheStatusCodeStatus() {
     }
 }

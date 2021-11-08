@@ -9,7 +9,7 @@
         <version>3.2.3.8</version>
     </parent>
 
-    <groupId>com.Crowdar</groupId>
+    <groupId>Practica-Lippia-Web-Luna</groupId>
     <artifactId>lippia-api-example-project</artifactId>
     <name>api-rest-automation</name>
     <packaging>jar</packaging>
@@ -26,6 +26,7 @@
         <crowdar.projectType>API</crowdar.projectType>
 
     </properties>
+
     <profiles>
         <profile>
             <id>Secuencial</id>
