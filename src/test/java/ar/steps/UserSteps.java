@@ -35,21 +35,4 @@ public class UserSteps extends PageSteps {
         }
         return parameters;
     }
-
-    @Given("My account created in clockify and my Api-Key generated")
-    public void myAccountCreatedInClockifyAndMyApiKeyGenerated() {
-    }
-
-    @And("I'm in the Projects tab")
-    public void iMInTheProjectsTab() {
-    }
-
-
-    @Then("I will get the proper status code {string}")
-    public void iWillGetTheProperStatusCodeStatusCode() {
-    }
-
-    @And("Got the status code <status>")
-    public void gotTheStatusCodeStatus() {
-    }
 }
