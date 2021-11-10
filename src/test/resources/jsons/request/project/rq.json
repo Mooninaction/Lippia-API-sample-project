@@ -5,15 +5,13 @@
     "Content-Type": "application/json"
   },
   "body": {
-  "name": "ProjectAPI",
-  "clientId": "",
-  "isPublic": "false",
-  "color": "#f44336",
-  "note": "This is project's note",
-  "billable": "true",
-  "public": false
+    "name": "ProjectAPI",
+    "clientId": "",
+    "isPublic": "false",
+    "color": "#f44336",
+    "note": "This is project's note",
+    "billable": "true",
+    "public": false
   },
   "endpoint": "/workspaces/616f3e6f3a4a8554be9ca59d/projects"
 }
-
-

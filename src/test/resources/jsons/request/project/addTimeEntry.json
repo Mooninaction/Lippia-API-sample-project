@@ -4,7 +4,7 @@
     "X-Api-Key": "{{api-key}}",
     "Content-Type": "application/json"
   },
-  "body" : {
+  "body": {
     "start": "2018-06-12T13:48:14.000Z",
     "billable": "true",
     "description": "{{description}}",
@@ -16,7 +16,7 @@
     ],
     "customFields": [
       {
-        "customFieldId" : "5b1e6b160cb8793dd93ec120",
+        "customFieldId": "5b1e6b160cb8793dd93ec120",
         "value": "San Francisco"
       }
     ]

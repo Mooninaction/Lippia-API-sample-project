@@ -39,17 +39,18 @@ public class ProjectSteps extends PageSteps {
         Class entityService = EntityConfiguration.valueOf(entity).getEntityService();
         Map<String, String> parameters = getParameters(jsonReplacementValues);
         String jsonPath = "request/".concat(jsonName);
-            if (parameters == null) {
-                entityService.getMethod(methodName.toLowerCase(), String.class).invoke("", jsonPath);
-            } else {
-                entityService.getMethod(methodName.toLowerCase(), String.class, Map.class).invoke("", jsonPath, parameters);
-            }
+        if (parameters == null) {
+            entityService.getMethod(methodName.toLowerCase(), String.class).invoke("", jsonPath);
+        } else {
+            entityService.getMethod(methodName.toLowerCase(), String.class, Map.class).invoke("", jsonPath, parameters);
         }
+    }
+
     private Map<String, String> getParameters(String jsonReplacementValues) {
         Map<String, String> parameters = null;
-            if (!StringUtils.isEmpty(jsonReplacementValues)) {
-                parameters = Splitter.on(",").withKeyValueSeparator(":").split(jsonReplacementValues);
-            }
+        if (!StringUtils.isEmpty(jsonReplacementValues)) {
+            parameters = Splitter.on(",").withKeyValueSeparator(":").split(jsonReplacementValues);
+        }
         return parameters;
     }
 
@@ -75,9 +76,9 @@ public class ProjectSteps extends PageSteps {
         ProjectValidator.validateId(entity);
     }
 
-    @Then("Validate that the corresponding (.*)")
+    @Then("Validate that the corresponding <description>")
     public void validateThatTheCorrespondingDescriptionWasAdded() {
-        ProjectValidator.validateDescription("NewHours");
+        ProjectValidator.validateDescription();
     }
 
     @Then("Validate that the <time> is null")
@@ -85,5 +86,8 @@ public class ProjectSteps extends PageSteps {
         ProjectValidator.validateTime(time);
     }
 
+    @Then("Validate that the corresponding <time>")
+    public void validateThatTheCorrespondingTime() {
+    }
 }
 
