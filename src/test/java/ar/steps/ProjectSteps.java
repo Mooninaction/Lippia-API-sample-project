@@ -1,6 +1,7 @@
 package ar.steps;
 
 import api.config.EntityConfiguration;
+import api.model.TimeEntry.TimeInterval;
 import ar.validator.ProjectValidator;
 import com.crowdar.api.rest.APIManager;
 import com.crowdar.core.PageSteps;
@@ -52,34 +53,37 @@ public class ProjectSteps extends PageSteps {
         return parameters;
     }
 
+
+    @And("Add <description> to the project")
+    public void addDescriptionToTheProject() {
+        BaseServices.DESCRIPTION.set("NewHours");
+    }
+
+
+    @And("I save time entry")
+    public void iSaveTimeEntry() {
+        BaseServices.TIME.set("4");
+    }
+
+    @And("I setting (.*)")
+    public void iSettingStartedHour(String startHour) {
+        BaseServices.HOUR.set(startHour);
+    }
+
     @Then("Validate the expected response was obtained in (.*)")
     public void validateTheExpectedResponseWasObtainedInEntity(String entity) {
         ProjectValidator.validateId(entity);
     }
 
-
-    @And("Add time to the project")
-    public void addTimeToTheProject() {
+    @Then("Validate that the corresponding (.*)")
+    public void validateThatTheCorrespondingDescriptionWasAdded() {
+        ProjectValidator.validateDescription("NewHours");
     }
 
-    @Then("Validate that the corresponding <time> was added")
-    public void validateThatTheCorrespondingTimeWasAdded() {
+    @Then("Validate that the <time> is null")
+    public void validateThatTheTimeIsNull(String time) {
+        ProjectValidator.validateTime(time);
     }
 
-    @And("I save time entry id")
-    public void iSaveTimeEntryId() {
-    }
-
-    @And("I setting <startedHour>")
-    public void iSettingStartedHour() {
-    }
-
-    @Then("Validate that the edited time is as expected")
-    public void validateThatTheEditedTimeIsAsExpected() {
-    }
-
-    @Then("Validate that the {string} is as expected")
-    public void validateThatTheStatusCodeIsAsExpected() {
-    }
 }
 
