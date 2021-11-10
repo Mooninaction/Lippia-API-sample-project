@@ -3,7 +3,6 @@
   "headers": {
     "X-Api-Key": "{{api-key}}",
     "Content-Type": "application/json"
-  }
-,
-  "endpoint": "/workspaces/{{id-work}}/user/616f3e6f3a4a8554be9ca59d/time-entries"
+  },
+  "endpoint": "/workspaces/{{id-work}}/user/616f3e6e3a4a8554be9ca594/time-entries"
 }

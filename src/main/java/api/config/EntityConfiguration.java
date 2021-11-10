@@ -8,17 +8,9 @@ import services.TimeEntry.GetTimeEntryService;
 
 public enum EntityConfiguration {
 
-    USER {
-        @Override
-        public Class<?> getEntityService() {
-            return UserService.class;
-        }
-    },
     GET_TIME {
         @Override
-        public Class<?> getEntityService() {
-            return GetTimeEntryService.class;
-        }
+        public Class<?> getEntityService() {return GetTimeEntryService.class;}
     },
     ADD_TIME {
         @Override
@@ -38,7 +30,6 @@ public enum EntityConfiguration {
             return DeleteTimeEntryService.class;
         }
     };
-
     public abstract Class<?> getEntityService();
 }
 

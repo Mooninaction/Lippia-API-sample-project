@@ -1,5 +1,6 @@
 package services.TimeEntry;
 
+import api.model.TimeEntry.TimeEntryResponse;
 import com.crowdar.api.rest.Response;
 import com.crowdar.core.PropertyManager;
 
@@ -10,7 +11,7 @@ public class GetTimeEntryService extends BaseServices {
 
 
     public static Response get(String jsonName) {
-        return get(jsonName);
+        return get(jsonName, TimeEntryResponse[].class,setParams());
     }
 
     private static Map<String, String> setParams() {
