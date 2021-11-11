@@ -26,15 +26,15 @@ public class ProjectSteps extends PageSteps {
 
     @And("My valid workspace id")
     public void myValidWorkspaceId() {
-        BaseServices.ID_WORKSPACE.set("617f1d51fb81833974f0b318");
+        BaseServices.ID_WORKSPACE.set("6187065f73a4fb750e89f2b8");
     }
 
     @And("My valid project id")
     public void myValidProjectId() {
-        BaseServices.ID_PROJECT.set("6187065f73a4fb750e89f2b8");
+        BaseServices.ID_PROJECT.set("61870689d1dc1e56c7c3a927");
     }
 
-    @When("I perform a '(.*)' to '(.*)' with the endpoint '(.*)' and '(.*)'")
+    @When("^I perform a '(.*)' to '(.*)' with the endpoint '(.*)' and '(.*)'$")
     public void iPerformAOperationToEntityWithTheEndpointJsonNameAnd(String methodName, String entity, String jsonName, String jsonReplacementValues) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
         Class entityService = EntityConfiguration.valueOf(entity).getEntityService();
         Map<String, String> parameters = getParameters(jsonReplacementValues);
@@ -54,26 +54,24 @@ public class ProjectSteps extends PageSteps {
         return parameters;
     }
 
-
     @And("Add <description> to the project")
     public void addDescriptionToTheProject() {
         BaseServices.DESCRIPTION.set("NewHours");
     }
 
-
-    @And("I save time entry")
-    public void iSaveTimeEntry() {
-        BaseServices.TIME.set("4");
+    @And("Search id_time")
+    public void searchId_time() {
+        BaseServices.ID_TIME.get();
     }
 
-    @And("I setting (.*)")
-    public void iSettingStartedHour(String startHour) {
-        BaseServices.HOUR.set(startHour);
+    @And("Edit (.*)")
+    public void editTime(String time) {
+        BaseServices.TIME.set(time);
     }
 
-    @Then("Validate the expected response was obtained in (.*)")
-    public void validateTheExpectedResponseWasObtainedInEntity(String entity) {
-        ProjectValidator.validateId(entity);
+    @And("Delete <time>")
+    public void deleteTime() {
+        BaseServices.TIME.remove();
     }
 
     @Then("Validate that the corresponding <description>")
@@ -87,7 +85,13 @@ public class ProjectSteps extends PageSteps {
     }
 
     @Then("Validate that the corresponding <time>")
-    public void validateThatTheCorrespondingTime() {
+    public void validateThatTheCorrespondingTime(String time) {
+        ProjectValidator.validateTime(time);
+    }
+
+    @Then("Validate the expected workspace id")
+    public void validateTheExpectedWorkspaceId() {
+        ProjectValidator.validateWorkspaceId();
     }
 }
 

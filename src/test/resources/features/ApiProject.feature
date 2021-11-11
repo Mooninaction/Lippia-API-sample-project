@@ -8,18 +8,18 @@ Feature: Practice Time tracker
     And   My valid project id
     When  I perform a '<operation>' to '<entity>' with the endpoint '<jsonName>' and ''
     And   status code <status> is obtained
-    Then  Validate the expected response was obtained in <entity>
+    Then  Validate the expected workspace id
     @Project
     Examples:
       | operation | entity   | jsonName             | status |
       | GET       | GET_TIME | project/getTimeEntry | 200    |
 
-  @Success  @Luna
+  @Success
   Scenario Outline: Add hours to the chosen project
     Given My account created in clockify and my Api-Key generated
     And   My valid workspace id
     And   My valid project id
-    And Add <description> to the project
+    And   Add <description> to the project
     When  I perform a '<operation>' to '<entity>' with the endpoint '<jsonName>' and ''
     And   status code <status> is obtained
     Then Validate that the corresponding <description>
@@ -28,13 +28,13 @@ Feature: Practice Time tracker
       | operation | entity   | jsonName             | status |
       | POST      | ADD_TIME | project/addTimeEntry | 201    |
 
-  @Success
+  @Success @Luna
   Scenario Outline: Edit the time recorded
     Given My account created in clockify and my Api-Key generated
     And   My valid workspace id
     And   My valid project id
-    And   I save time entry
-    And   I setting <startedHour>
+    And   Search id_time
+    And   Edit <time>
     When  I perform a '<operation>' to '<entity>' with the endpoint '<jsonName>' and ''
     And   status code <status> is obtained
     Then Validate that the corresponding <time>
@@ -45,10 +45,12 @@ Feature: Practice Time tracker
 
 
   @Success
-  Scenario Outline: Delete time recorded
+  Scenario Outline: Delete time recorded @Luna
     Given My account created in clockify and my Api-Key generated
     And   My valid workspace id
     And   My valid project id
+    And   Search id_time
+    And   Delete <time>
     When  I perform a '<operation>' to '<entity>' with the endpoint '<jsonName>' and ''
     And   status code <status> is obtained
     Then  Validate that the <time> is null
